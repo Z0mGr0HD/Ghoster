@@ -14,7 +14,7 @@
 
 <?php
 session_start();
- include_once '../Configs/config.init.php';
+ include_once '/Configs/config.init.php';
  
  if(isset($_SESSION["userid"])) 
    {   
@@ -24,8 +24,8 @@ session_start();
  
   if(isset($_GET['login'])) {
       
-     $nickname = $_POST['nickname'];
-     $passwort = $_POST['passwort']; 
+     $nickname = $_POST['Nickname'];
+     $passwort = $_POST['Passwort']; 
      
         $statement = $pdo->prepare("SELECT * FROM benutzerdaten WHERE Nickname = :nickname");
         $result = $statement->execute(array('nickname' => $nickname));
@@ -53,9 +53,11 @@ session_start();
   ?>      
         
         <form method="POST" action="?login=1"> 
-        <input type="text" name="Nickname" value="" size="100" />
-        <input type="password" name="Passwort" value="" size="100" />
-        <input type="submit" value="Einloggen" name="Login" />
+            <h1>Nickname :</h1>
+            <input type="text" name="Nickname" value="" size="100" /><br>
+            <h2>Passwort :</h2>
+            <input type="password" name="Passwort" value="" size="100" /><br>
+            <input type="submit" value="Einloggen" name="Login" /><br>
         </form>
         
     </body>

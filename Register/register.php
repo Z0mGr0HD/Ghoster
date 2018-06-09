@@ -9,11 +9,11 @@
 	<?php 
 	session_start();
 	$showFormular = true; //Variable ob das Registrierungsformular anezeigt werden soll
-        include_once '../Configs/config.init.php';
+        include_once '/Configs/config.init.php';
 	if(isset($_GET['register'])) {
 	$error = false;
 	$email = $_POST['Email'];
-        $email2 = $_POST['Email2']
+        $email2 = $_POST['Email2'];      
 	$passwort = $_POST['Passwort'];
 	$passwort2 = $_POST['Passwort2'];
 	$nickname = $_POST['Nickname'];
@@ -25,12 +25,12 @@
 		echo '<b>Bitte eine g&#252;ltige E-Mail-Adresse eingeben</b><br>';
 		$error = true;
 	}
-	if(strlen($code) == 0) {
-		echo '<b>Bitte einen Einladungscode angeben</b><br>';
-		$error = true;
-	} 	
 	if(strlen($passwort) == 0) {
 		echo '<b>Bitte ein Passwort angeben</b><br>';
+		$error = true;
+	}
+		if(strlen($passwort2) == 0) {
+		echo '<b>Bitte ein Passwort Wiederholen</b><br>';
 		$error = true;
 	}
 	if($passwort != $passwort2) {
@@ -38,7 +38,8 @@
 		$error = true;
 	}
         if($email != $email2) {
-            echo '<b>Die Email muss übereinstimmen</b>'
+            echo '<b>Die Email muss übereinstimmen</b>';
+            $error = true;
         }
 	if(strlen($nickname) == 0) {
 		echo '<b>Bitte ein Nickname angeben</b><br>';
@@ -95,14 +96,23 @@
 	if($showFormular) {
 	?>
     <form method="POST" action="?register=1">
-        <input type="text" name="Nickname" value="" size="100" />
-        <input type="text" name="Email" value="" size="100" />
-        <input type="text" name="Email2" value="" size="100" />
-        <input type="password" name="Passwort" value="" size="100" />
-        <input type="password2" name="Passwort" value="" size="100" />
-        <input type="text" name="Vorname" value="" size="100" />
-        <input type="text" name="Nachname" value="" size="100" />
-        <input type="date" id="gebdatum" size="100">
+	     <h>Nickname</h><br>
+        <input type="text" name="Nickname" value="" size="100" /><br>
+		<h>E-Mail-Adresse</h><br>
+        <input type="text" name="Email" value="" size="100" /><br>
+		<h>E-Mail-Adresse Wiederholen</h><br>
+        <input type="text" name="Email2" value="" size="100" /><br>
+		<h>Passwort </h><br>
+        <input type="password" name="Passwort" value="" size="100" /><br>
+		<h>Passwort Wiederholen</h><br>
+        <input type="password" name="Passwort2" value="" size="100" /><br>
+		<h>Vorname</h><br>
+        <input type="text" name="Vorname" value="" size="100" /><br>
+		<h>Nachnahme</h><br>
+        <input type="text" name="Nachname" value="" size="100" /><br>
+		<h>Geburtstags datum</h><br>
+        <input type="date" id="gebdatum" size="100"><br>
+		<button type="submit" name="login">Registrieren</button>
     </form>
 
 <?php
