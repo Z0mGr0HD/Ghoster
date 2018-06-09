@@ -1,6 +1,8 @@
 <?php
-include_once '../language/german.php';
-include_once '../language/english.php';
-if()
 
-$msg = ""
+if($german) {
+include_once '../language/german.php';
+}elseif ($english) {
+    include_once '../language/english.php';
+}
+

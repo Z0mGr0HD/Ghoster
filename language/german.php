@@ -1,4 +1,4 @@
-<?
+<?php
 $Title = "Ghoster";
 $Profile = "Profil";
 $Message = "Nachrichten";
