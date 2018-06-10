@@ -5,8 +5,8 @@
     <body>
     
      <?php
-     require_once '../config/config.init.php';
-      require_once '../config/language.php';  
+     require_once '/config/config.init.php';
+     require_once '/config/language.php';  
         
       
       //hier ist die function zum blocken
@@ -16,8 +16,11 @@
          
         if($result) {
          echo $block;
-        }else echo 'ERROR';
+        }else{ 
+            echo 'ERROR';
          } 
+     }
+     // Funktion Abfrage ob geblockt ist
         function isBlocked($user1,$user2) {
             $statement = $pdo->prepare("SELECT * FROM userblock WHERE user1 = :user1 AND user2 = :user2");
         $result = $statement->execute(array('user1' => $user1, 'user2' => $user2));
@@ -25,8 +28,10 @@
         
         if($user == false) {
             $blocked = false;
+            return false;
         }else {
             $blocked = true;
+            return true;
         }
         }
         
