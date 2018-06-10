@@ -11,7 +11,7 @@ and open the template in the editor.
     </head>
     <body>
         <?php
-          include_once 'Configs/config.init.php';
+          include_once 'config/config.init.php';
            include_once 'login/login.php';
            
            
