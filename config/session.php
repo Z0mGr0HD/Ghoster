@@ -1,4 +1,4 @@
 <?php
 session_start();
-$Username = $_SESSION['nick'];
+$Username = $_SESSION['username'];
 ?>

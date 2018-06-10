@@ -1,10 +1,10 @@
 <?php
-$Title = "Ghoster";
-$Profile = "Profil";
-$Message = "Nachrichten";
-$News = "Neuigkeiten";
-$Login = "Einloggen";
-$Register = "Registrieren";
-$Startseite = "Startseite";
+$title = "Ghoster";
+$profile = "Profil";
+$message = "Nachrichten";
+$news = "Neuigkeiten";
+$login = "Einloggen";
+$register = "Registrieren";
+$mainpage = "Startseite";
 
 ?>
