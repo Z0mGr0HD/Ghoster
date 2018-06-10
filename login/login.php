@@ -14,7 +14,7 @@
 
 <?php
 session_start();
- include_once '/config/config.init.php';
+ include_once '../config/config.init.php';
  
  if(isset($_SESSION["userid"])) 
    {   
@@ -41,6 +41,7 @@ session_start();
         
         
   }
+   }
 
         
         
