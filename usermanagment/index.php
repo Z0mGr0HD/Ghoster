@@ -5,8 +5,8 @@
     <body>
     
      <?php
-     require_once '/config/config.init.php';
-     require_once '/config/language.php';  
+     require_once '../config/config.init.php';
+     require_once '../config/language.php';  
         
       
       //hier ist die function zum blocken
