@@ -4,7 +4,7 @@
     <body>
         <form method="POST" action="index.php">
             <select name="Sprache" size="2">
-                <option>Deutsch</option>
+                <option>German</option>
                 <option>English</option>
             </select>
             <input type="submit" value="Ok" />

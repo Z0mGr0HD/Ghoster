@@ -14,7 +14,7 @@
 
 <?php
 session_start();
- include_once '/Configs/config.init.php';
+ include_once '/config/config.init.php';
  
  if(isset($_SESSION["userid"])) 
    {   
@@ -24,19 +24,19 @@ session_start();
  
   if(isset($_GET['login'])) {
       
-     $nickname = $_POST['Nickname'];
-     $passwort = $_POST['Passwort']; 
+     $nickname = $_POST['username'];
+     $passwort = $_POST['password'];
      
-        $statement = $pdo->prepare("SELECT * FROM benutzerdaten WHERE Nickname = :nickname");
-        $result = $statement->execute(array('nickname' => $nickname));
+        $statement = $pdo->prepare("SELECT * FROM users WHERE username = :username");
+        $result = $statement->execute(array('username' => $username));
         $user = $statement->fetch();
         
-       if ($user !== false && password_verify($passwort, $user['Kennwort']) ) {
+       if ($user !== false && password_verify($passwort, $user['password']) ) {
          $_SESSION['userid'] = $user['id'];
-         $_SESSION['nick'] = $user['nickname'];
+         $_SESSION['username'] = $user['username'];
          die('Login erfolgreich. <br>Weiter zur <a href="/index.php">Ghoster</a> <meta http-equiv="refresh" content="1; URL=../index.php">');
         } else {
-                echo '<b>Nickname oder Passwort ist ung&uuml;ltig</b>';
+                echo '<b>Benutzername oder Passwort ist ung&uuml;ltig</b>';
         }
         
         
@@ -54,10 +54,10 @@ session_start();
         
         <form method="POST" action="?login=1"> 
             <h1>Nickname :</h1>
-            <input type="text" name="Nickname" value="" size="100" /><br>
+            <input type="text" name="username" value="" size="100" /><br>
             <h2>Passwort :</h2>
-            <input type="password" name="Passwort" value="" size="100" /><br>
-            <input type="submit" value="Einloggen" name="Login" /><br>
+            <input type="password" name="password" value="" size="100" /><br>
+            <input type="submit" name="login" value="Anmelden"/><br>
         </form>
         
     </body>

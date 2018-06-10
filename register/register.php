@@ -9,31 +9,32 @@
 	<?php
 	session_start();
 	$showFormular = true; //Variable ob das Registrierungsformular anezeigt werden soll
-        include_once '/Configs/config.init.php';
+        include_once '/config/config.init.php';
 	if(isset($_GET['register'])) {
 	$error = false;
-	$email = $_POST['Email'];
-        $email2 = $_POST['Email2'];
-	$passwort = $_POST['Passwort'];
-	$passwort2 = $_POST['Passwort2'];
-	$nickname = $_POST['Nickname'];
-	$vorname = $_POST['Vorname'];
-        $Nachnahme = $_POST['Nachnahme'];
-	$ipadresse = $_SERVER['REMOTE_ADDR'];
-        $gebdate = $_POST['gebdatum'];
-        if(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+	$email = $_POST['email'];
+        $email2 = $_POST['email2'];
+	$password = $_POST['password'];
+	$password2 = $_POST['password2'];
+	$username = $_POST['username'];
+	$firstname = $_POST['firstname'];
+        $lastname = $_POST['lastname'];
+	$ip = $_SERVER['REMOTE_ADDR'];
+    $birthday = $_POST['birthday'];
+
+    if(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 		echo '<b>Bitte eine g&#252;ltige E-Mail-Adresse eingeben</b><br>';
 		$error = true;
 	}
-	if(strlen($passwort) == 0) {
+	if(strlen($password) == 0) {
 		echo '<b>Bitte ein Passwort angeben</b><br>';
 		$error = true;
 	}
-		if(strlen($passwort2) == 0) {
+		if(strlen($password2) == 0) {
 		echo '<b>Bitte ein Passwort Wiederholen</b><br>';
 		$error = true;
 	}
-	if($passwort != $passwort2) {
+	if($password != $password2) {
 		echo '<b>Die Passwörter müssen übereinstimmen</b><br>';
 		$error = true;
 	}
@@ -41,12 +42,12 @@
             echo '<b>Die Email muss übereinstimmen</b>';
             $error = true;
         }
-	if(strlen($nickname) == 0) {
-		echo '<b>Bitte ein Nickname angeben</b><br>';
+	if(strlen($username) == 0) {
+		echo '<b>Bitte ein Username angeben</b><br>';
 		$error = true;
 	}
 
-	if(strlen($vorname) == 0) {
+	if(strlen($firstname) == 0) {
 		echo '<b>Bitte ein Vorname angeben</b><br>';
 		$error = true;
 	}
@@ -55,7 +56,7 @@
 
 	//Überprüfe, dass die E-Mail-Adresse noch nicht registriert wurde
 	if(!$error) {
-		$statement = $pdo->prepare("SELECT * FROM benutzerdaten WHERE email = :email");
+		$statement = $pdo->prepare("SELECT * FROM users WHERE email = :email");
 		$result = $statement->execute(array('email' => $email));
 		$user = $statement->fetch();
 
@@ -67,12 +68,12 @@
 
 		   //Überprüfe, dass der Nickname noch nicht registriert wurde
 	if(!$error) {
-		$statement = $pdo->prepare("SELECT * FROM users WHERE Nickname = :nickname");
-		$result = $statement->execute(array('nickname' => $nickname));
+		$statement = $pdo->prepare("SELECT * FROM users WHERE username = :username");
+		$result = $statement->execute(array('username' => $username));
 		$nick = $statement->fetch();
 
 		if($nick !== false) {
-			echo '<b>Dieser Nickname ist bereits vergeben</b><br>';
+			echo '<b>Dieser Username ist bereits vergeben</b><br>';
 			$error = true;
 		}
 	}
@@ -81,8 +82,8 @@
 	if(!$error) {
 		$passwort_hash = password_hash($passwort, PASSWORD_DEFAULT);
 
-		$statement = $pdo->prepare("INSERT INTO users (email, Kennwort, Vorname, Nachnahme, Nickname, GebDatum, ip) VALUES (:email, :Kennwort, :Vorname, :Nachnahme, :Nickname, :GebDatum, :ip)");
-		$result = $statement->execute(array('email' => $email, 'Kennwort' => $passwort_hash, 'Vorname' => $vorname, 'Nachnahme' => $Nachnahme, 'Nickname' => $nickname, 'GebDatum' => $gebdate, 'ip' => $ipadresse));
+		$statement = $pdo->prepare("INSERT INTO users (email, password, firstname, lastname, username, birthday, ip) VALUES (:email, :password, :firstname, :lastname, :username, :birthday, :ip)");
+		$result = $statement->execute(array('email' => $email, 'password' => $passwort_hash, 'firstname' => $firstname, 'lastname' => $lastname, 'username' => $username, 'birthday' => $birthday, 'ip' => $ip));
 
 		if($result) {
 			echo 'Du wurdest erfolgreich registriert. <br><a href="/index.php">Zum Login</a> <meta http-equiv="refresh" content="2; URL=/index.php">';
@@ -96,22 +97,22 @@
 	if($showFormular) {
 	?>
     <form method="POST" action="?register=1">
-	     <h>Nickname</h><br>
-        <input type="text" name="Nickname" value="" size="100" /><br>
+	     <h>Username</h><br>
+        <input type="text" name="username" value="" size="100" /><br>
 		<h>E-Mail-Adresse</h><br>
-        <input type="text" name="Email" value="" size="100" /><br>
+        <input type="text" name="email" value="" size="100" /><br>
 		<h>E-Mail-Adresse Wiederholen</h><br>
-        <input type="text" name="Email2" value="" size="100" /><br>
+        <input type="text" name="email2" value="" size="100" /><br>
 		<h>Passwort </h><br>
-        <input type="password" name="Passwort" value="" size="100" /><br>
+        <input type="password" name="password" value="" size="100" /><br>
 		<h>Passwort Wiederholen</h><br>
-        <input type="password" name="Passwort2" value="" size="100" /><br>
+        <input type="password" name="password2" value="" size="100" /><br>
 		<h>Vorname</h><br>
-        <input type="text" name="Vorname" value="" size="100" /><br>
+        <input type="text" name="firstname" value="" size="100" /><br>
 		<h>Nachnahme</h><br>
-        <input type="text" name="Nachname" value="" size="100" /><br>
+        <input type="text" name="lastname" value="" size="100" /><br>
 		<h>Geburtstags datum</h><br>
-        <input type="date" id="gebdatum" size="100"><br>
+        <input type="date" id="birthday" size="100"><br>
 		<button type="submit" name="login">Registrieren</button>
     </form>
 
