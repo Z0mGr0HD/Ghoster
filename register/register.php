@@ -9,7 +9,7 @@
 	<?php
 	session_start();
 	$showFormular = true; //Variable ob das Registrierungsformular anezeigt werden soll
-        include_once '/config/config.init.php';
+        include_once '../config/config.init.php';
 	if(isset($_GET['register'])) {
 	$error = false;
 	$email = $_POST['email'];
@@ -20,7 +20,10 @@
 	$firstname = $_POST['firstname'];
         $lastname = $_POST['lastname'];
 	$ip = $_SERVER['REMOTE_ADDR'];
-    $birthday = $_POST['birthday'];
+	$bday = $_POST['bday'];
+	$bmonth = $_POST['bmonth'];
+	$byear = $_POST['byear'];
+    $birthday = $bday. "/" .$bmonth. "/" .$byear;
 
     if(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 		echo '<b>Bitte eine g&#252;ltige E-Mail-Adresse eingeben</b><br>';
@@ -35,7 +38,7 @@
 		$error = true;
 	}
 	if($password != $password2) {
-		echo '<b>Die Passwörter müssen übereinstimmen</b><br>';
+            echo '<b>Die Passwörter müssen übereinstimmen</b><br>';
 		$error = true;
 	}
         if($email != $email2) {
@@ -112,7 +115,7 @@
 		<h>Nachnahme</h><br>
         <input type="text" name="lastname" value="" size="100" /><br>
 		<h>Geburtstags datum</h><br>
-        <input type="date" id="birthday" size="100"><br>
+        <input type="text" name="bday" value="" size="20" /><input type="text" name="bmonth" value="Month" size="20" /><input type="text" name="byear" value="" size="30" /><br>
 		<button type="submit" name="login">Registrieren</button>
     </form>
 
