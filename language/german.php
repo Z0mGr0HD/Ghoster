@@ -6,5 +6,5 @@ $News = "Neuigkeiten";
 $Login = "Einloggen";
 $Register = "Registrieren";
 $Startseite = "Startseite";
-
+test
 ?>
