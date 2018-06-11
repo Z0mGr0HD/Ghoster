@@ -5,12 +5,13 @@
     <body>
     
      <?php
-     require_once '../config/config.init.php';
+     
      require_once '../config/language.php';  
         
       
       //hier ist die function zum blocken
      function block($user1,$user2) {
+		 require '../config/config.init.php';
          if(!isBlocked($user1,$user2)) {
          $statement = $pdo->prepare("INSERT INTO userblock (user1,user2) VALUES (:user1 , :user2)");
 	$result = $statement->execute(array('user1' => $user1, 'user2' => $user2));
@@ -24,6 +25,7 @@
      }
      // Funktion Abfrage ob geblockt ist
         function isBlocked($user1,$user2) {
+			require '../config/config.init.php';
             $statement = $pdo->prepare("SELECT * FROM userblock WHERE user1 = :user1 AND user2 = :user2");
         $result = $statement->execute(array('user1' => $user1, 'user2' => $user2));
         $user = $statement->fetch();
@@ -38,6 +40,7 @@
         }
         
         function UnBlock($user1,$user2) {
+			require '../config/config.init.php';
             if(!isBlocked($user1,$user2)) {
                $statement = $pdo->prepare("DELETE FROM userblock (user1,user2) VALUES (:user1 , :user2)");
 	$result = $statement->execute(array('user1' => $user1, 'user2' => $user2));

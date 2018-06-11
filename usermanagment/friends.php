@@ -1,7 +1,6 @@
 <html>
     <head>
         <?php
-        require_once '../config/config.init.php';
         require_once '../config/language.php';
         
         ?>
@@ -11,6 +10,7 @@
 
 
 function isFriends($user1,$user2) {
+	require '../config/config.init.php';
     $accepted = "accepted";
     $pending = "pending";
    
@@ -26,6 +26,7 @@ function isFriends($user1,$user2) {
 }
 
 function friendRequest($user1,$user2) {
+	require '../config/config.init.php';
         $pending1 = "pending";
              if(!isFriends($user1,$user2)) {
          $statement = $pdo->prepare("INSERT INTO friends (user1,user2,status) VALUES (:user1 , :user2, :status)");
@@ -40,6 +41,7 @@ function friendRequest($user1,$user2) {
 }
 
 function getFriendStatus($user1,$user2) {
+	require '../config/config.init.php';
         $accepted = "accepted";
     $pending = "pending";
    
@@ -55,6 +57,7 @@ function getFriendStatus($user1,$user2) {
 }
 
 function deleteFriend($user1,$user2) {
+	require '../config/config.init.php';
      if(!isFriends($user1,$user2)) {
                $statement = $pdo->prepare("DELETE FROM friends (user1,user2) VALUES (:user1 , :user2)");
 	$result = $statement->execute(array('user1' => $user1, 'user2' => $user2));

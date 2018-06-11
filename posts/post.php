@@ -1,32 +1,29 @@
 <html>
-    <head>
-    <?php
-      require_once '../config/config.init.php';
-      require_once '../config/language.php';
-
-
-
-?>    
+    <head>   
     </head>
     <body>
         <?php
-        function writePost($fromuser,$message) {
+		session_start();
+
+       function writePost($fromuser,$message) {
+		  require_once '../config/config.init.php';
         $time = date("Y-m-d H:i:s");
-            
-        $statement = $pdo->prepare("INSERT INTO posts (fromuser, message, time) VALUES (:fromuser, :message, :time)");
-	$result = $statement->execute(array('fromuser' => $fromuser, 'message' => $message, 'time' => $time));
+        
+		
+        $statement = $pdo->prepare("INSERT INTO posts (mid, fromuser, message, time) VALUES (:mid, :fromuser, :message, :time)");
+	    $result = $statement->execute(array(':mid' => null, ':fromuser' => $fromuser, ':message' => $message, ':time' => $time));
          
         if($result) {
-            return true;
+            
         }else {
-            return false;
+           die;
         }
         }
         
         
         if(isset($_POST['send'])) {
             $msg = $_POST['message'];
-            $user = $_SESSION["username"];
+            $user = $_SESSION["nick"];
             writePost($user,$msg);
         }
         

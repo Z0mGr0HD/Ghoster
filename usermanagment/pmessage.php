@@ -1,7 +1,6 @@
 <html>
     <head>
         <?php
-        require_once '../config/config.init.php';
         require_once '../config/language.php';
         require_once 'block.php';
         ?>
@@ -11,6 +10,7 @@
         <?php
         
         function sendMessage($fromuser,$touser,$message) {
+			require '../config/config.init.php';
             if(!isBlocked($fromuser,$touser)) {
             $isread = false;
             $time = date("Y-m-d H:i:s");
@@ -31,6 +31,7 @@
         // Message Show
         
         function getMessage($fromuser) {
+			require '../config/config.init.php';
             $statement = $pdo->prepare("SELECT FROM pmessages * WHERE touser = :fromuser");
             $result = $statement->execute(array('fromuser' => $fromuser));
             $user = $statement->fetch();

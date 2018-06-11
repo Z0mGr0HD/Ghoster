@@ -7,10 +7,11 @@
 <body>
 
 	<?php
+	require_once '../config/config.init.php';
 	session_start();
 	$showFormular = true; //Variable ob das Registrierungsformular anezeigt werden soll
-        include_once '../config/config.init.php';
-	if(isset($_GET['register'])) {
+        
+	if(isset($_POST['register'])) {
 	$error = false;
 	$email = $_POST['email'];
         $email2 = $_POST['email2'];
@@ -59,7 +60,7 @@
 
 	//Überprüfe, dass die E-Mail-Adresse noch nicht registriert wurde
 	if(!$error) {
-		$statement = $pdo->prepare("SELECT * FROM users WHERE email = :email");
+		$statement = $pdo->prepare("SELECT * FROM gusers WHERE email = :email");
 		$result = $statement->execute(array('email' => $email));
 		$user = $statement->fetch();
 
@@ -71,7 +72,7 @@
 
 		   //Überprüfe, dass der Nickname noch nicht registriert wurde
 	if(!$error) {
-		$statement = $pdo->prepare("SELECT * FROM users WHERE username = :username");
+		$statement = $pdo->prepare("SELECT * FROM gusers WHERE username = :username");
 		$result = $statement->execute(array('username' => $username));
 		$nick = $statement->fetch();
 
@@ -83,9 +84,9 @@
 
 	//Keine Fehler, wir können den Nutzer registrieren
 	if(!$error) {
-		$passwort_hash = password_hash($passwort, PASSWORD_DEFAULT);
+		$passwort_hash = password_hash($password, PASSWORD_DEFAULT);
 
-		$statement = $pdo->prepare("INSERT INTO users (email, password, firstname, lastname, username, birthday, ip) VALUES (:email, :password, :firstname, :lastname, :username, :birthday, :ip)");
+		$statement = $pdo->prepare("INSERT INTO gusers (email, password, firstname, lastname, username, birthday, ip) VALUES (:email, :password, :firstname, :lastname, :username, :birthday, :ip)");
 		$result = $statement->execute(array('email' => $email, 'password' => $passwort_hash, 'firstname' => $firstname, 'lastname' => $lastname, 'username' => $username, 'birthday' => $birthday, 'ip' => $ip));
 
 		if($result) {
@@ -99,7 +100,7 @@
 
 	if($showFormular) {
 	?>
-    <form method="POST" action="?register=1">
+    <form method="POST" action="<?php echo($_SERVER['PHP_SELF']); ?>">
 	     <h>Username</h><br>
         <input type="text" name="username" value="" size="100" /><br>
 		<h>E-Mail-Adresse</h><br>
@@ -116,7 +117,7 @@
         <input type="text" name="lastname" value="" size="100" /><br>
 		<h>Geburtstags datum</h><br>
         <input type="text" name="bday" value="" size="20" /><input type="text" name="bmonth" value="Month" size="20" /><input type="text" name="byear" value="" size="30" /><br>
-		<button type="submit" name="login">Registrieren</button>
+		<button type="submit" name="register">Registrieren</button>
     </form>
 
 <?php
