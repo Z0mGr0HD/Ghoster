@@ -11,6 +11,7 @@
       
       //hier ist die function zum blocken
      function block($user1,$user2) {
+         if(!isBlocked($user1,$user2)) {
          $statement = $pdo->prepare("INSERT INTO userblock (user1,user2) VALUES (:user1 , :user2)");
 	$result = $statement->execute(array('user1' => $user1, 'user2' => $user2));
          
@@ -19,6 +20,7 @@
         }else{ 
             echo 'ERROR';
          } 
+         }
      }
      // Funktion Abfrage ob geblockt ist
         function isBlocked($user1,$user2) {
@@ -36,6 +38,7 @@
         }
         
         function UnBlock($user1,$user2) {
+            if(!isBlocked($user1,$user2)) {
                $statement = $pdo->prepare("DELETE FROM userblock (user1,user2) VALUES (:user1 , :user2)");
 	$result = $statement->execute(array('user1' => $user1, 'user2' => $user2));
         
@@ -43,6 +46,7 @@
             echo $unblock;
         }else {
             echo 'ERROR';
+        }
         }
         }
       
