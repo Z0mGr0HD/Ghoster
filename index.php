@@ -12,8 +12,24 @@ and open the template in the editor.
     <body>
         <?php
            include_once 'login/login.php';
+           $startsite = true;
            
-           
+           if($startsite) {
+           ?>
+        
+           <div class="feed">
+                   <?php
+                   require 'profile.php';
+                   $nick = $_SESSION['nick'];
+                   $timeFeed($nick);
+                   ?>
+           </div>
+           <?php
+           }elseif ($profile) {
+                                 require 'profile.php';
+                   $nick = $_SESSION['nick'];
+                   $getProfile($nick); 
+           }
            
         ?>
     </body>
