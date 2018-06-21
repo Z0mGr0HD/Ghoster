@@ -22,11 +22,14 @@ and open the template in the editor.
                    require 'profile.php';
                    $nick = $_SESSION['nick'];
                    $timeFeed($nick);
+                   require 'post.php';
+                   
                    ?>
            </div>
            <?php
            }elseif ($profile) {
-                                 require 'profile.php';
+                    require 'profile.php';
+
                    $nick = $_SESSION['nick'];
                    $getProfile($nick); 
            }
