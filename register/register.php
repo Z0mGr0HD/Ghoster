@@ -8,7 +8,6 @@
 
 	<?php
 	require_once 'config/config.init.php';
-	session_start();
 	$showFormular = true; //Variable ob das Registrierungsformular anezeigt werden soll
         
 	if(isset($_POST['register'])) {

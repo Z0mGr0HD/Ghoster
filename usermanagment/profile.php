@@ -63,9 +63,10 @@
 				
                 echo "<a href=?profile=".$row['fromuser'].">".$row['fromuser']."<br /></a>";
                 echo $row['message']."<br />";
-			
+			  if(isset($row1)){
                 echo $row1['fromuser']."<br />";
                 echo $row1['message']."<br />";
+			  }
             }
         }
         

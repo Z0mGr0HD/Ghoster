@@ -103,7 +103,7 @@
             <div class="form-group">
               <label>Passwort</label>
               <input type="password" class="form-control" placeholder="Passwort" id="password" name="password" /> </div>
-            <button type="submit" class="btn btn-primary" name="login" value="Anmelden" />
+            <button type="submit" class="btn btn-primary" name="login" >Anmelden</button>
           </form>
 		  <?php 
 		  }

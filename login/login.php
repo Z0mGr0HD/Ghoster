@@ -16,7 +16,6 @@
 
  require_once 'config/config.init.php';
  
- session_start();
  if(isset($_SESSION["userid"])) 
    {   
        $loggedin = true;

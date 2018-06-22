@@ -2,11 +2,12 @@
     <head>   
     </head>
     <body>
+	  			 
+
         <?php
-		session_start();
 
        function writePost($fromuser,$message) {
-		  require_once 'config/config.init.php';
+		  require 'config/config.init.php';
         $time = date("Y-m-d H:i:s");
         
 		
@@ -68,23 +69,28 @@
         }else {
            die;
         }
-            
-        }
+		}
         
-        if(isset($_POST['send'])) {
-            $msg = $_POST['message'];
+				 if(isset($_POST['sendmsg'])) {
+                                     $error = false; 
+                                     $msg = $_POST['message'];
             $user = $_SESSION["nick"];
+                if(strlen($msg) == 0) {
+		$error = true;
+	}
+           if($error) {
             writePost($user,$msg);
+           }
         }
-        
-        
+		
+					   ?>
+		
+			           <form method="POST" action="<?php echo($_SERVER['PHP_SELF']);?>">
+            <input type="text" name="message" value="" size="75" />
+            <button type="submit" value="Send" name="sendmsg"> Send </button>
+        </form>
+        <?php
         
         ?>
-        
-        <form method="POST" action="<?php echo($_SERVER['PHP_SELF']);?>">
-            <input type="text" name="message" value="" size="100" />
-            <input type="submit" value="Send" name="send" />
-        </form>
-        
     </body>
 </html>

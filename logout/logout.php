@@ -1,9 +1,9 @@
 <?php
-if($_POST['logout']) {
+if(isset($_POST['logout'])) {
 // Initialisierung der Session.
 // Wenn Sie session_name("irgendwas") verwenden, vergessen Sie es
 // jetzt nicht!
-session_start();
+
 
 // Löschen aller Session-Variablen.
 $_SESSION = array();
