@@ -32,7 +32,7 @@ and open the template in the editor.
         
         
 
-      echo '<div class="feed" style="background-color:lightsteelblue; width: auto; height: auto;  top: 50%; left: 50%; position: fixed;" >';
+      echo '<div class="feed" style="background-color:lightsteelblue; width: auto; height: auto;  top: 50%; left: 50%;" >';
                    
                    require_once 'usermanagment/profile.php';
                    $nick = $_SESSION['nick'];
