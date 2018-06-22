@@ -1,8 +1,7 @@
 <html>
     <head>
         <?php
-        require_once '../config/language.php';
-        require_once 'block.php';
+        require_once 'usermanagment/block.php';
         ?>
     </head>
     
@@ -39,7 +38,25 @@
             return $user;
         }
         
-        
+        if(isset($_GET['messages']) {
+			?>
+			
+			<form action="<?php echo($_SERVER['PHP_SELF']); ?>" method="POST">"
+			
+			<input type="text" name="touser" />
+			<input type="text" name="msg"/>
+		    <button name="send">Send</button>
+			</form>
+			<?php
+		}
+		if(isset($_POST['send']) {
+			$touser = $_POST['touser'];
+			$msg = $_POST['msg'];
+			$user = $_SESSION['nick'];
+			sendMessage($user,$touser,$msg);
+			
+		}
+		
         
         
         

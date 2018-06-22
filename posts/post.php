@@ -6,7 +6,7 @@
 		session_start();
 
        function writePost($fromuser,$message) {
-		  require_once '../config/config.init.php';
+		  require_once 'config/config.init.php';
         $time = date("Y-m-d H:i:s");
         
 		
@@ -21,7 +21,7 @@
         }
         
         function getMessage($id) {
-            require_once '../config/config.init.php';
+            require_once 'config/config.init.php';
            
             $message = null;
             
@@ -38,7 +38,7 @@
         
         function getPostID($fromuser) {
             $id = null;
-            require_once '../config/config.init.php';
+            require_once 'config/config.init.php';
             
             
             
@@ -56,7 +56,7 @@
   
         function repost($fromuser,$id,$touser) {
             
-            require_once '../config/config.init.php';
+            require_once 'config/config.init.php';
  
             $message = getMessage($id);
             

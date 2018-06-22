@@ -7,7 +7,7 @@
 <body>
 
 	<?php
-	require_once '../config/config.init.php';
+	require_once 'config/config.init.php';
 	session_start();
 	$showFormular = true; //Variable ob das Registrierungsformular anezeigt werden soll
         
@@ -22,9 +22,9 @@
         $lastname = $_POST['lastname'];
 	$ip = $_SERVER['REMOTE_ADDR'];
 	$bday = $_POST['bday'];
-	$bmonth = $_POST['bmonth'];
-	$byear = $_POST['byear'];
-    $birthday = $bday. "/" .$bmonth. "/" .$byear;
+#	$bmonth = $_POST['bmonth'];
+#	$byear = $_POST['byear'];
+#    $birthday = $bday. "/" .$bmonth. "/" .$byear;
 
     if(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 		echo '<b>Bitte eine g&#252;ltige E-Mail-Adresse eingeben</b><br>';
@@ -87,7 +87,7 @@
 		$passwort_hash = password_hash($password, PASSWORD_DEFAULT);
 
 		$statement = $pdo->prepare("INSERT INTO gusers (email, password, firstname, lastname, username, birthday, ip) VALUES (:email, :password, :firstname, :lastname, :username, :birthday, :ip)");
-		$result = $statement->execute(array('email' => $email, 'password' => $passwort_hash, 'firstname' => $firstname, 'lastname' => $lastname, 'username' => $username, 'birthday' => $birthday, 'ip' => $ip));
+		$result = $statement->execute(array('email' => $email, 'password' => $passwort_hash, 'firstname' => $firstname, 'lastname' => $lastname, 'username' => $username, 'birthday' => $bday, 'ip' => $ip));
 
 		if($result) {
 			echo 'Du wurdest erfolgreich registriert. <br><a href="/index.php">Zum Login</a> <meta http-equiv="refresh" content="2; URL=/index.php">';
@@ -98,30 +98,6 @@
 	}
 	}
 
-	if($showFormular) {
-	?>
-    <form method="POST" action="<?php echo($_SERVER['PHP_SELF']); ?>">
-	     <h>Username</h><br>
-        <input type="text" name="username" value="" size="100" /><br>
-		<h>E-Mail-Adresse</h><br>
-        <input type="text" name="email" value="" size="100" /><br>
-		<h>E-Mail-Adresse Wiederholen</h><br>
-        <input type="text" name="email2" value="" size="100" /><br>
-		<h>Passwort </h><br>
-        <input type="password" name="password" value="" size="100" /><br>
-		<h>Passwort Wiederholen</h><br>
-        <input type="password" name="password2" value="" size="100" /><br>
-		<h>Vorname</h><br>
-        <input type="text" name="firstname" value="" size="100" /><br>
-		<h>Nachnahme</h><br>
-        <input type="text" name="lastname" value="" size="100" /><br>
-		<h>Geburtstags datum</h><br>
-        <input type="text" name="bday" value="" size="20" /><input type="text" name="bmonth" value="Month" size="20" /><input type="text" name="byear" value="" size="30" /><br>
-		<button type="submit" name="register">Registrieren</button>
-    </form>
-
-<?php
-} //Ende von if($showFormular)
 ?>
 
 	</body>

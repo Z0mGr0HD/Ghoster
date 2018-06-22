@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <!--
 To change this license header, choose License Headers in Project Properties.
@@ -11,29 +12,33 @@ and open the template in the editor.
     </head>
     <body>
         <?php
-           include_once 'login/login.php';
-           $startsite = true;
-           
-           if($startsite) {
-           ?>
-        
-           <div class="feed">
-                   <?php
-                   require 'profile.php';
-                   $nick = $_SESSION['nick'];
-                   $timeFeed($nick);
-                   require 'post.php';
-                   
-                   ?>
-           </div>
-           <?php
-           }elseif ($profile) {
-                    require 'profile.php';
+		 # require_once 'usermanagment/pmessage.php';
+		  require_once 'logout/logout.php';
+           require_once 'login/login.php';	
+		   require_once 'register/register.php';
+		   require_once 'styles/theme1/index.php';
 
-                   $nick = $_SESSION['nick'];
-                   $getProfile($nick); 
-           }
+           $startsite = true;
+           if($loggedin) {
+           if($startsite) {
            
+  
+      echo '<div class="feed" style="background-color:lightsteelblue; width: 300px; height: 200px;  top: 50%; left: 50%; position: absolute;" >';
+  
+                   require_once 'usermanagment/profile.php';
+                   $nick = $_SESSION['nick'];
+                   timeFeed($nick);
+                 
+     echo '</div>';
+          
+           }elseif ($profile) {
+                require_once 'usermanagment/profile.php';
+                   $nick = $_SESSION['nick'];
+                   getProfile($nick); 
+           }
+           }else {
+			   $startsite = false;
+		   }
         ?>
     </body>
 </html>

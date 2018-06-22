@@ -8,6 +8,6 @@
 
   $title = "Ghoster";
   $permission = false;
-  $pdo = new PDO('mysql:host=127.0.0.1;dbname=ghoster', 'root', '');
+  $pdo = new PDO('mysql:host=127.0.0.1;dbname=ghoster', 'root', '5894758947');
 
   ?>
