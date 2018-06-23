@@ -26,11 +26,16 @@
             </div>
           </li>
         </ul>
+        <?php
+          $info = "T";
+          echo $info; ?>
+        <!-- Login PC -->
         <form class="form-inline my-2 my-0 d-none d-xl-block" method="POST" action="<?php echo($_SERVER['PHP_SELF']);?>">
           <input class="form-control mr-2" type="text" placeholder="Benutzername" name="username" required = "required">
           <input class="form-control mr-2" type="password" placeholder="Passwort" name="password" required = "required">
           <button class="btn btn-outline-success ml-2" type="submit" id="loginform" name="login">Anmelden</button>
         </form>
+
         <a href="#login" class="btn navbar-btn d-xl-none btn-outline-success" >Anmelden
           <!-- Only visible on smaller then "xl" -->
         </a>
@@ -53,10 +58,11 @@
     </div>
   </div>
   <div class="py-5">
-    <!-- Move Login under Background to Jump -->
+    <!-- Move Login down (br) -->
     <br>
     <br>
     <br> </div>
+<!-- Login Mobil -->
   <div class="py-3 d-xl-none" id="login">
     <div class="container">
       <div class="row">

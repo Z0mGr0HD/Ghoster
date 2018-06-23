@@ -26,35 +26,14 @@ and open the template in the editor.
 
            $startsite = true;
            if($loggedin) {
+        
+               $info = 'Du bist bereits angemeldet.';
 
-           if($startsite) {
-           
-  
-  
+
 
         
-        
-        
+         // echo '<meta http-equiv="refresh" content="20; URL=https://www.redirect301.de/meta-refresh.html">';
 
-      echo '<div class="feed">';
-                   
-                   require_once 'usermanagment/profile.php';
-                   $nick = $_SESSION['nick'];
-				        
-        
-
-                   timeFeed($nick);
-                 
-     echo '</div>';
-          
-           }elseif ($profile) {
-                require_once 'usermanagment/profile.php';
-                   getProfile($nick); 
-                   $nick = $_SESSION['username'];
-           }
-           }else {
-			   $startsite = false;
-		   }
-        ?>
+		  } ?>
     </body>
 </html>
