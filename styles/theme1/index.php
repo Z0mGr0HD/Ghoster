@@ -43,8 +43,8 @@
             </form>
         <?php } if($loggedin == false) { ?>
         <form class="form-inline my-2 my-0 d-none d-xl-block" action="<?php echo($_SERVER['PHP_SELF']); ?>" method="POST">
-          <input class="form-control mr-2" type="text" placeholder="Benutzername" name="nickname">
-          <input class="form-control mr-2" type="password" placeholder="Passwort" name="password">
+          <input class="form-control mr-2" type="text" placeholder="Benutzername" required="required" name="nickname">
+          <input class="form-control mr-2" type="password" placeholder="Passwort" required="required" name="password">
           <button class="btn btn-outline-success ml-2" type="submit" id="loginform" name="login">Anmelden</button>
         </form>
         <a href="#login" class="btn navbar-btn d-xl-none btn-outline-success">Anmelden
@@ -69,7 +69,7 @@
     </div>
   </div>
   <div class="py-5" >
-    <!-- Move Login under Background to Jump -->
+    <!-- Move Login down -->
     <br><br><br>
   </div>
   <div class="py-3 d-xl-none" id="login">
@@ -90,12 +90,12 @@
           <form action="<?php echo($_SERVER['PHP_SELF']); ?>" method="POST">
             <div class="form-group">
               <label>Benutzername</label>
-              <input type="text" class="form-control" placeholder="Benutzername" id="username" name="nickname" / >
+              <input type="text" class="form-control" placeholder="Benutzername" required="required" id="username" name="nickname" / >
               <small class="form-text text-muted"></small>
             </div>
             <div class="form-group">
               <label>Passwort</label>
-              <input type="password" class="form-control" placeholder="Passwort" id="password" name="password" /> </div>
+              <input type="password" class="form-control" placeholder="Passwort" required="required" id="password" name="password" /> </div>
             <button type="submit" class="btn btn-primary" name="login" >Anmelden</button>
           </form>
 		  <?php } ?>
