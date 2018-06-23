@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
-  <link rel="stylesheet" href="theme.css" type="text/css">
+  <link rel="stylesheet" href="/styles/theme1/theme.css" type="text/css">
   <title>Theme1</title>
 </head>
 
@@ -38,12 +38,12 @@
             </div>
           </li>
         </ul>
-        <form class="form-inline my-2 my-0 d-none d-xl-block">
+        <form class="form-inline my-2 my-0 d-none d-xl-block" method="POST" action="<?php echo($_SERVER['PHP_SELF']);?>">
           <input class="form-control mr-2" type="text" placeholder="Benutzername" name="username">
-          <input class="form-control mr-2" type="text" placeholder="Passwort" name="password">
-          <button class="btn btn-outline-success ml-2" type="submit" id="loginform">Anmelden</button>
+          <input class="form-control mr-2" type="password" placeholder="Passwort" name="password">
+          <button class="btn btn-outline-success ml-2" type="submit" id="loginform" name="login">Anmelden</button>
         </form>
-        <a href="#login" class="btn navbar-btn d-xl-none btn-outline-success">Anmelden
+        <a href="#login" class="btn navbar-btn d-xl-none btn-outline-success" >Anmelden
           <!-- Only visible on smaller then "xl" -->
         </a>
         <a class="btn navbar-btn d-none d-xl-block" href="#register">Neu hier? Registrieren</a>
@@ -83,7 +83,7 @@
       <div class="row">
         <div class="col-1 d-xl-none"></div>
         <div class="col-10 d-xl-none">
-          <form>
+          <form method="POST" action="<?php echo($_SERVER['PHP_SELF']);?>">
             <div class="form-group">
               <label>Benutzername</label>
               <input type="text" class="form-control" placeholder="Benutzername" id="username" name="username">
@@ -92,7 +92,7 @@
             <div class="form-group">
               <label>Passwort</label>
               <input type="password" class="form-control" placeholder="Passwort" id="password" name="password"> </div>
-            <button type="submit" class="btn btn-primary">Anmelden</button>
+            <button type="submit" class="btn btn-primary" name="login">Anmelden</button>
           </form>
         </div>
         <div class="col-1 d-xl-none"></div>
@@ -113,7 +113,7 @@
       <div class="row">
         <div class="col-1"></div>
         <div class="col-10">
-          <form>
+          <form method="POST" action="<?php echo($_SERVER['PHP_SELF']);?>">
             <div class="form-group">
               <label>Benutzername*</label>
               <input type="text" class="form-control" placeholder="Benutzername" id="registerusername" name="username" required="required">
@@ -152,7 +152,7 @@
               <input type="date" class="form-control" id="birthday" name="bday">
               <small class="form-text text-muted"></small>
             </div>
-            <button type="submit" class="btn btn-primary">Registrieren</button>
+            <button type="submit" class="btn btn-primary" name="register">Registrieren</button>
           </form>
         </div>
         <div class="col-1"></div>
@@ -189,9 +189,6 @@
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" crossorigin="anonymous" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-  <pingendo onclick="window.open('https://pingendo.com/', '_blank')" style="cursor:pointer;position: fixed;bottom: 10px;right:10px;padding:4px;background-color: #00b0eb;border-radius: 8px; width:250px;display:flex;flex-direction:row;align-items:center;justify-content:center;font-size:14px;color:white">Made with Pingendo Free&nbsp;&nbsp;
-    <img src="https://pingendo.com/site-assets/Pingendo_logo_big.png" class="d-block" alt="Pingendo logo" height="16">
-  </pingendo>
 </body>
 
 </html>
