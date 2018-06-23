@@ -39,8 +39,8 @@
           </li>
         </ul>
         <form class="form-inline my-2 my-0 d-none d-xl-block">
-          <input class="form-control mr-2" type="text" placeholder="Benutzername">
-          <input class="form-control mr-2" type="text" placeholder="Passwort">
+          <input class="form-control mr-2" type="text" placeholder="Benutzername" name="username">
+          <input class="form-control mr-2" type="text" placeholder="Passwort" name="password">
           <button class="btn btn-outline-success ml-2" type="submit" id="loginform">Anmelden</button>
         </form>
         <a href="#login" class="btn navbar-btn d-xl-none btn-outline-success">Anmelden
@@ -86,12 +86,12 @@
           <form>
             <div class="form-group">
               <label>Benutzername</label>
-              <input type="text" class="form-control" placeholder="Benutzername" id="username">
+              <input type="text" class="form-control" placeholder="Benutzername" id="username" name="username">
               <small class="form-text text-muted"></small>
             </div>
             <div class="form-group">
               <label>Passwort</label>
-              <input type="password" class="form-control" placeholder="Passwort" id="password"> </div>
+              <input type="password" class="form-control" placeholder="Passwort" id="password" name="password"> </div>
             <button type="submit" class="btn btn-primary">Anmelden</button>
           </form>
         </div>
@@ -116,40 +116,40 @@
           <form>
             <div class="form-group">
               <label>Benutzername*</label>
-              <input type="text" class="form-control" placeholder="Benutzername" id="username" required="required">
+              <input type="text" class="form-control" placeholder="Benutzername" id="registerusername" name="username" required="required">
               <small class="form-text text-muted"></small>
             </div>
             <div class="form-group">
               <label>Vorname*</label>
-              <input type="text" class="form-control" placeholder="Vorname" id="firstname" required="required">
+              <input type="text" class="form-control" placeholder="Vorname" id="firstname" name="firstname" required="required">
               <small class="form-text text-muted"></small>
             </div>
             <div class="form-group">
               <label>Nachname*</label>
-              <input type="text" class="form-control" placeholder="Nachname" id="lastname" required="required">
+              <input type="text" class="form-control" placeholder="Nachname" id="lastname" name="lastname"  required="required">
               <small class="form-text text-muted"></small>
             </div>
             <div class="form-group">
               <label>E-Mail Adresse*</label>
-              <input type="text" class="form-control" placeholder="E-Mail Adresse" id="email" required="required">
+              <input type="text" class="form-control" placeholder="E-Mail Adresse" id="email" name="email" required="required">
               <small class="form-text text-muted"></small>
             </div>
             <div class="form-group">
               <label>Email-Adresse wiederholen*</label>
-              <input type="text" class="form-control" placeholder="Email-Adresse wiederholen" id="email2" required="required">
+              <input type="text" class="form-control" placeholder="Email-Adresse wiederholen" id="email2" name="email2" required="required">
               <small class="form-text text-muted"></small>
             </div>
             <div class="form-group">
               <label>Passwort**</label>
-              <input type="password" class="form-control" placeholder="Passwort" id="password" required="required"> </div>
+              <input type="password" class="form-control" placeholder="Passwort" id="registerpassword" name="password" required="required"> </div>
             <div class="form-group">
               <label>Passwort wiederholen**</label>
-              <input type="password" class="form-control" placeholder="Passwort wiederholen" id="password2" required="required">
+              <input type="password" class="form-control" placeholder="Passwort wiederholen" id="password2" name="password2" required="required">
               <small class="form-text text-muted"></small>
             </div>
             <div class="form-group">
               <label>Geburtsdatum (freiwillig)</label>
-              <input type="date" class="form-control" placeholder="Geburtsdatum" id="birthday">
+              <input type="date" class="form-control" id="birthday" name="bday">
               <small class="form-text text-muted"></small>
             </div>
             <button type="submit" class="btn btn-primary">Registrieren</button>

@@ -74,7 +74,7 @@
 				 if(isset($_POST['sendmsg'])) {
                                      $error = false; 
                                      $msg = $_POST['message'];
-            $user = $_SESSION["nick"];
+            $user = $_SESSION["username"];
                 if(strlen($msg) == 0) {
 		$error = true;
 	}
