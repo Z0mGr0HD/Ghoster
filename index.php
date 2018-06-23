@@ -13,10 +13,15 @@ and open the template in the editor.
     <body>
         <?php
 		session_start();
-		    require_once 'logout/logout.php';
+
+            require_once 'styles/files/bootstrap-top.php';
+		      require_once 'styles/theme1/index.php';
+            require_once 'styles/files/bootstrap-bottom.php';
+
             require_once 'login/login.php';
+		    require_once 'logout/logout.php';
 		    require_once 'register/register.php';
-		    require_once 'styles/theme1/index.php';
+
             require_once 'config/config.init.php';
 
            $startsite = true;
