@@ -31,7 +31,7 @@ and open the template in the editor.
         
         
 
-      echo '<div class="feed"';
+      echo '<div class="feed">';
                    
                    require_once 'usermanagment/profile.php';
                    $nick = $_SESSION['nick'];
