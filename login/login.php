@@ -24,11 +24,11 @@
    }
  
   if(isset($_POST['login'])) {
-        $nickname = $_POST['nickname'];
+        $username = $_POST['username'];
         $passwort = $_POST['password'];
 
-        $statement = $pdo->prepare("SELECT * FROM gusers WHERE username = :nickname");
-        $result = $statement->execute(array('nickname' => $nickname));
+        $statement = $pdo->prepare("SELECT * FROM gusers WHERE username = :username");
+        $result = $statement->execute(array('username' => $username));
         $user = $statement->fetch();
         //Überprüfung des Passworts
 		
@@ -37,7 +37,7 @@
 				$_SESSION['nick'] = $user['username'];
                 die('<div class="col-md-12 text-center erfolgmsg">Login erfolgreich. <br>Weiter zur <a href="index.php">Ghoster</a> <meta http-equiv="refresh" content="1; URL=index.php"></div>');
         } else {
-                echo  '<div class="col-md-12 text-center errormsg"><b>Nickname oder Passwort ist ung&uuml;ltig oder du wurdest Gesperrt</b>';
+                echo  '<div class="col-md-12 text-center errormsg"><b>username oder Passwort ist ung&uuml;ltig oder du wurdest Gesperrt</b>';
         }
 		
   }

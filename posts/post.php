@@ -78,7 +78,7 @@
                 if(strlen($msg) == 0) {
 		$error = true;
 	}
-           if($error) {
+           if(!$error) {
             writePost($user,$msg);
            }
         }

@@ -9,12 +9,12 @@
         <?php
         
         if(isset($_POST['yourprofile'])) {
-            $nick = $_SESSION['nick'];
-            getProfile($nick);
+            $username = $_SESSION['username'];
+            getProfile($username);
         }
         if(isset($_GET['profile'])) {
-             $nick = $_POST['nick'];
-            getProfile($nick);
+             $username = $_POST['username'];
+            getProfile($username);
         }
         
         
@@ -25,13 +25,26 @@
             $ppic = profilePicture($user);
            
             ?> <img src="<?php $ppic ?>" style="width:30px;height:30px;" /> <?php
-            
+            countGhosts($user);
             timeFeed($user);
             
             
             
             
         }
+		function countGhosts($user) {
+			 require 'config/config.init.php';
+			$exe = $pdo->prepare("SELECT mid FROM posts WHERE fromuser = :user");
+            $exe->execute(array(':user' => $user));
+            $exe->fetch();
+			$i = null;
+			while($row = $exe->fetch()) {
+				$i++;
+			}
+			
+			return $i;
+			
+		}
         
         function profilePicture($user) {
             require 'config/config.init.php';

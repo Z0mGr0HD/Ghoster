@@ -7,7 +7,7 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <meta charset="UTF-8">
+	<meta charset="utf-8"> 
         <title>Ghoster - Alpha</title>
     </head>
     <body>
@@ -45,8 +45,8 @@ and open the template in the editor.
           
            }elseif ($profile) {
                 require_once 'usermanagment/profile.php';
-                   $nick = $_SESSION['nick'];
                    getProfile($nick); 
+                   $nick = $_SESSION['username'];
            }
            }else {
 			   $startsite = false;
