@@ -28,12 +28,14 @@ and open the template in the editor.
            if($loggedin) {
         
                $info = 'Du bist bereits angemeldet.';
-
+                echo $info;
 
 
         
          // echo '<meta http-equiv="refresh" content="20; URL=https://www.redirect301.de/meta-refresh.html">';
 
-		  } ?>
+		  }else {
+                      echo $info;
+                  } ?>
     </body>
 </html>

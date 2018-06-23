@@ -34,7 +34,7 @@
 		
         if ($user !== false && password_verify($passwort, $user['password']) ) {
                 $_SESSION['userid'] = $user['id'];
-				$_SESSION['username'] = $user['username'];
+		$_SESSION['username'] = $user['username'];
 
                 die('Weiter zu <a href="dashboard/index.php">Ghoster</a> <meta http-equiv="refresh" content="0.25; URL=dashboard/index.php">');
         } else {
