@@ -5,7 +5,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
-  <link rel="stylesheet" href="styles/theme1/theme.css" type="text/css">
+  <link rel="stylesheet" href="/styles/theme1/theme.css" type="text/css">
+  <title>Theme1</title>
 </head>
 
 <body>
@@ -22,7 +23,7 @@
             <a class="nav-link" href="#"> Start</a>
           </li>
           <li class="nav-item" id="nachrichten">
-            <a class="nav-link" href="#messages"> Nachrichten</a>
+            <a class="nav-link" href="#"> Nachrichten</a>
           </li>
           <li class="nav-item" id="gruppen">
             <a class="nav-link" href="#"> Gruppen</a>
@@ -37,17 +38,12 @@
             </div>
           </li>
         </ul>
-        <?php if($loggedin) { ?>
-            <form method="POST">
-                <input type="submit" value="logout" name="logout" />
-            </form>
-        <?php } if($loggedin == false) { ?>
-        <form class="form-inline my-2 my-0 d-none d-xl-block" action="<?php echo($_SERVER['PHP_SELF']); ?>" method="POST">
-          <input class="form-control mr-2" type="text" placeholder="Benutzername" required="required" name="nickname">
-          <input class="form-control mr-2" type="password" placeholder="Passwort" required="required" name="password">
+        <form class="form-inline my-2 my-0 d-none d-xl-block" method="POST" action="<?php echo($_SERVER['PHP_SELF']);?>">
+          <input class="form-control mr-2" type="text" placeholder="Benutzername" name="username">
+          <input class="form-control mr-2" type="password" placeholder="Passwort" name="password">
           <button class="btn btn-outline-success ml-2" type="submit" id="loginform" name="login">Anmelden</button>
         </form>
-        <a href="#login" class="btn navbar-btn d-xl-none btn-outline-success">Anmelden
+        <a href="#login" class="btn navbar-btn d-xl-none btn-outline-success" >Anmelden
           <!-- Only visible on smaller then "xl" -->
         </a>
         <a class="btn navbar-btn d-none d-xl-block" href="#register">Neu hier? Registrieren</a>
@@ -68,10 +64,11 @@
       </div>
     </div>
   </div>
-  <div class="py-5" >
-    <!-- Move Login down -->
-    <br><br><br>
-  </div>
+  <div class="py-5">
+    <!-- Move Login under Background to Jump -->
+    <br>
+    <br>
+    <br> </div>
   <div class="py-3 d-xl-none" id="login">
     <div class="container">
       <div class="row">
@@ -81,121 +78,114 @@
       </div>
     </div>
   </div>
-
   <div class="py-3">
     <div class="container">
       <div class="row">
         <div class="col-1 d-xl-none"></div>
         <div class="col-10 d-xl-none">
-          <form action="<?php echo($_SERVER['PHP_SELF']); ?>" method="POST">
+          <form method="POST" action="<?php echo($_SERVER['PHP_SELF']);?>">
             <div class="form-group">
               <label>Benutzername</label>
-              <input type="text" class="form-control" placeholder="Benutzername" required="required" id="username" name="nickname" / >
+              <input type="text" class="form-control" placeholder="Benutzername" id="username" name="username">
               <small class="form-text text-muted"></small>
             </div>
             <div class="form-group">
               <label>Passwort</label>
-              <input type="password" class="form-control" placeholder="Passwort" required="required" id="password" name="password" /> </div>
-            <button type="submit" class="btn btn-primary" name="login" >Anmelden</button>
+              <input type="password" class="form-control" placeholder="Passwort" id="password" name="password"> </div>
+            <button type="submit" class="btn btn-primary" name="login">Anmelden</button>
           </form>
-		  <?php } ?>
         </div>
         <div class="col-1 d-xl-none"></div>
       </div>
     </div>
   </div>
-
-  <?php if($showFormular && $loggedin == false) { ?>
-      <div class="pt-3" id="register">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-12">
-              <h1 class="text-center">Registrierung</h1>
-            </div>
-          </div>
+  <div class="pt-3" id="register">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h1 class="text-center">Registrierung</h1>
         </div>
       </div>
-      <div class="py-1">
-        <div class="container">
-          <div class="row">
-            <div class="col-1"></div>
-            <div class="col-10">
-
-              <form action="<?php echo($_SERVER['PHP_SELF']); ?>" method="POST">
-                <div class="form-group">
-                  <label>Benutzername*</label>
-                  <input type="text" class="form-control" placeholder="Benutzername" id="registerusername" required="required" name="username" />
-                  <small class="form-text text-muted"></small>
-                </div>
-                <div class="form-group">
-                  <label>Vorname*</label>
-                  <input type="text" class="form-control" placeholder="Vorname" id="firstname" required="required" name="firstname" />
-                  <small class="form-text text-muted"></small>
-                </div>
-                <div class="form-group">
-                  <label>Nachname*</label>
-                  <input type="text" class="form-control" placeholder="Nachname" id="lastname" required="required" name="lastname" />
-                  <small class="form-text text-muted"></small>
-                </div>
-                <div class="form-group">
-                  <label>E-Mail Adresse*</label>
-                  <input type="email" class="form-control" placeholder="E-Mail Adresse" id="email" required="required" name="email" />
-                  <small class="form-text text-muted"></small>
-                </div>
-                <div class="form-group">
-                  <label>Email-Adresse wiederholen*</label>
-                  <input type="email" class="form-control" placeholder="Email-Adresse wiederholen" id="email2" required="required" name="email2" />
-                  <small class="form-text text-muted"></small>
-                </div>
-                <div class="form-group">
-                  <label>Passwort**</label>
-                  <input type="password" class="form-control" placeholder="Passwort" id="registerpassword" required="required" name="password" /> </div>
-                <div class="form-group">
-                  <label>Passwort wiederholen**</label>
-                  <input type="password" class="form-control" placeholder="Passwort wiederholen" id="registerpassword2" required="required" name="password2" />
-                  <small class="form-text text-muted"></small>
-                </div>
-                <div class="form-group">
-                  <label>Geburtsdatum (freiwillig)</label>
-                  <input type="date" class="form-control" placeholder="Geburtsdatum" id="birthday" name="bday" />
-                  <small class="form-text text-muted"></small>
-                </div>
-                <button type="submit" class="btn btn-primary" name="register">Registrieren</button>
-              </form>
-
+    </div>
+  </div>
+  <div class="py-1">
+    <div class="container">
+      <div class="row">
+        <div class="col-1"></div>
+        <div class="col-10">
+          <form method="POST" action="<?php echo($_SERVER['PHP_SELF']);?>">
+            <div class="form-group">
+              <label>Benutzername*</label>
+              <input type="text" class="form-control" placeholder="Benutzername" id="registerusername" name="username" required="required">
+              <small class="form-text text-muted"></small>
             </div>
-            <div class="col-1"></div>
-          </div>
+            <div class="form-group">
+              <label>Vorname*</label>
+              <input type="text" class="form-control" placeholder="Vorname" id="firstname" name="firstname" required="required">
+              <small class="form-text text-muted"></small>
+            </div>
+            <div class="form-group">
+              <label>Nachname*</label>
+              <input type="text" class="form-control" placeholder="Nachname" id="lastname" name="lastname"  required="required">
+              <small class="form-text text-muted"></small>
+            </div>
+            <div class="form-group">
+              <label>E-Mail Adresse*</label>
+              <input type="text" class="form-control" placeholder="E-Mail Adresse" id="email" name="email" required="required">
+              <small class="form-text text-muted"></small>
+            </div>
+            <div class="form-group">
+              <label>Email-Adresse wiederholen*</label>
+              <input type="text" class="form-control" placeholder="Email-Adresse wiederholen" id="email2" name="email2" required="required">
+              <small class="form-text text-muted"></small>
+            </div>
+            <div class="form-group">
+              <label>Passwort**</label>
+              <input type="password" class="form-control" placeholder="Passwort" id="registerpassword" name="password" required="required"> </div>
+            <div class="form-group">
+              <label>Passwort wiederholen**</label>
+              <input type="password" class="form-control" placeholder="Passwort wiederholen" id="password2" name="password2" required="required">
+              <small class="form-text text-muted"></small>
+            </div>
+            <div class="form-group">
+              <label>Geburtsdatum (freiwillig)</label>
+              <input type="date" class="form-control" id="birthday" name="bday">
+              <small class="form-text text-muted"></small>
+            </div>
+            <button type="submit" class="btn btn-primary" name="register">Registrieren</button>
+          </form>
         </div>
+        <div class="col-1"></div>
       </div>
-      <div class="text-left">
-        <div class="container">
-          <div class="row pt-3 pb-2">
-            <div class="col-1"> </div>
-            <div class="col-11">
-              <h6>
-                <b>* Pflichtfelder</b>
-              </h6>
-            </div>
-            <div class="col-7"> </div>
-          </div>
-          <div class="row pb-5">
-            <div class="col-1"> </div>
-            <div class="col-11">
-              <h6>
-                <nobrake>
-                  <b>** Das Passwort muss folgende Kriterien enthalten:</b>
-                </nobrake>
-                <br>
-                <br>- Mindestens 2 Groß- und Kleinbuchstaben
-                <br>- 2 Zahlen (1234567890)
-                <br>- 2 Sonderzeichen (!?"§%$&amp;/()=:.,-#*'`´°) </h6>
-            </div>
-            <div class="col-7"> </div>
-          </div>
+    </div>
+  </div>
+  <div class="text-left">
+    <div class="container">
+      <div class="row pt-3 pb-2">
+        <div class="col-1"> </div>
+        <div class="col-11">
+          <h6>
+            <b>* Pflichtfelder</b>
+          </h6>
         </div>
+        <div class="col-7"> </div>
       </div>
-  <?php } ?>
+      <div class="row pb-5">
+        <div class="col-1"> </div>
+        <div class="col-11">
+          <h6>
+            <nobrake>
+              <b>** Das Passwort muss folgende Kriterien enthalten:</b>
+            </nobrake>
+            <br>
+            <br>- Mindestens 2 Groß- und Kleinbuchstaben
+            <br>- 2 Zahlen (1234567890)
+            <br>- 2 Sonderzeichen (!?"§%$&amp;/()=:.,-#*'`´°) </h6>
+        </div>
+        <div class="col-7"> </div>
+      </div>
+    </div>
+  </div>
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" crossorigin="anonymous" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>

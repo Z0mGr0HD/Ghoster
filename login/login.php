@@ -35,7 +35,7 @@
         if ($user !== false && password_verify($passwort, $user['password']) ) {
                 $_SESSION['userid'] = $user['id'];
 				$_SESSION['username'] = $user['username'];
-                die('<div class="col-md-12 text-center erfolgmsg">Login erfolgreich. <br>Weiter zur <a href="index.php">Ghoster</a> <meta http-equiv="refresh" content="1; URL=index.php"></div>');
+                die('<div class="col-md-12 text-center erfolgmsg">Login erfolgreich. <br>Weiter zur <a href="dashboard/index.php">Ghoster</a> <meta http-equiv="refresh" content="1; URL=dashboard/index.php"></div>');
         } else {
                 echo  '<div class="col-md-12 text-center errormsg"><b>username oder Passwort ist ung&uuml;ltig oder du wurdest Gesperrt</b>';
         }
