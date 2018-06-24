@@ -1,15 +1,19 @@
 <?php
-include_once '../config/session.php';
+require_once '../usermanagment/profile.php';
 echo 'Profil';   echo 'Nachrichten';
+session_start();
+
+$profile = false;
 
 
 
+           if(isset($_SESSION["userid"])) 
+   {   
 
-
-
-           $startsite = true;
-           if($loggedin) {
-
+               $startsite = true;
+			   }else {
+			   $startsite = false;
+		   }
            if($startsite) {
 
 
@@ -21,23 +25,18 @@ echo 'Profil';   echo 'Nachrichten';
 
       echo '<div class="feed">';
 
-                   require_once '../usermanagment/profile.php';
-                   $nick = $_SESSION['nick'];
-
-
-
+                   
+                   $nick = $_SESSION['username'];
                    timeFeed($nick);
 
-     echo '</div>';
+    echo '</div>';
 
            }elseif ($profile) {
-                require_once '../usermanagment/profile.php';
-                   getProfile($nick);
-                   $nick = $_SESSION['username'];
+                
+                   $nick = $_SESSION['username']; 
+				   getProfile($nick);
            }
-           }else {
-			   $startsite = false;
-		   }
+           
 
 
 

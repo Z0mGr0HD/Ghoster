@@ -1,8 +1,8 @@
-<!doctype php>
+<!doctype html>
 
 <html>
     <head>
-        <title><?php $title ?> - Profile</title> 
+        <title>Ghoster - Profile</title> 
     </head>
     
     <body>
@@ -13,18 +13,18 @@
             getProfile($username);
         }
         if(isset($_GET['profile'])) {
-             $username = $_POST['username'];
+             $username = $_GET['profile'];
             getProfile($username);
         }
         
         
         function getProfile($user) {
-            require 'config/config.init.php';
+            require '../config/config.init.php';
          
             
             $ppic = profilePicture($user);
            
-            ?> <img src="<?php $ppic ?>" style="width:30px;height:30px;" /> <?php
+            ?> <img src="../uploads/<?php echo $ppic; ?>" style="width:70px;height:70px;" /> <?php
             countGhosts($user);
             timeFeed($user);
             
@@ -49,14 +49,14 @@
         function profilePicture($user) {
             require '../config/config.init.php';
             
-            $exe = $pdo->prepare("SELECT picture FROM gusers WHERE username = :user");
-            $exe->execute(array(':user' => $user));
-            $exe->fetch();
+            $exe = $pdo->prepare("SELECT * FROM gusers WHERE username = :user");
+            $result = $exe->execute(array(':user' => $user));
+            $get = $exe->fetch();
             
-            if($exe == null) {
-                return false;
+            if($get == false) {
+                return null;
         }else {
-            $pic = $exe['picture'];
+            $pic = $get['picture'];
             return $pic; 
             
         }
@@ -72,8 +72,8 @@
             $exe->execute(array(':user' => $user));
             
             while($row = $exe->fetch() or $row1 = $exe1->fetch()) {
-
-				
+             $ppic = profilePicture($user);
+				?><img src="../uploads/<?php echo $ppic; ?>" style="width:20px;height:20px;" /><?php
                 echo "<a href=?profile=".$row['fromuser'].">".$row['fromuser']."<br /></a>";
                 echo $row['message']."<br />";
 			  if(isset($row1)){
