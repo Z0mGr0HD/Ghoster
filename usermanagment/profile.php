@@ -33,7 +33,7 @@
             
         }
 		function countGhosts($user) {
-			 require 'config/config.init.php';
+			 require '../config/config.init.php';
 			$exe = $pdo->prepare("SELECT mid FROM posts WHERE fromuser = :user");
             $exe->execute(array(':user' => $user));
             $exe->fetch();
@@ -47,7 +47,7 @@
 		}
         
         function profilePicture($user) {
-            require 'config/config.init.php';
+            require '../config/config.init.php';
             
             $exe = $pdo->prepare("SELECT picture FROM gusers WHERE username = :user");
             $exe->execute(array(':user' => $user));
@@ -64,7 +64,7 @@
         }
         
         function timeFeed($user) {
-            require 'config/config.init.php';
+            require '../config/config.init.php';
              $exe1 = $pdo->prepare("SELECT * FROM repost WHERE touser = :user");
             $exe1->execute(array(':user' => $user));
             

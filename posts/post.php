@@ -7,7 +7,7 @@
         <?php
 
        function writePost($fromuser,$message) {
-		  require 'config/config.init.php';
+		  require '../config/config.init.php';
         $time = date("Y-m-d H:i:s");
         
 		
