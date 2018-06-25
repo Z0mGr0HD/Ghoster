@@ -1,0 +1,14 @@
+.footer{
+	background-color:hotpink !important;
+	bottom:0 !important;
+	position:fixed !important;
+}
+a{
+	text-decoration:none !important;
+}
+.red{
+	color:red !important;
+}
+.grey{
+	background-color:lightgrey !important;
+}

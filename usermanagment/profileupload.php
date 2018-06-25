@@ -1,3 +1,8 @@
+<html>
+<head>
+<title>File Uploading</title>
+</head>
+<body>
 <?php
  require '../config/config.init.php';
 	 session_start();
@@ -46,4 +51,15 @@ $dateiname_neu = $username.$userid.".".$path_parts['extension'];
 		}
 	}
 }
+
+?>
+
+<form action="<?php echo($_SERVER['PHP_SELF']);?>" method="post" enctype="multipart/form-data">
+<p>
+File : <input type="file" name="upload">
+</p>
+<input type="submit" value="upload file" name="upload1">
+</form>
+</body>
+</html>
 
