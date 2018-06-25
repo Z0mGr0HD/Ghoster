@@ -182,7 +182,7 @@ if($showseite) {
 	<?php
 	$showFormular = true; //Variable ob das Registrierungsformular anezeigt werden soll
  
-	if(isset($_GET['register'])) {
+	if(isset($_POST['register'])) {
 	$error = false;
 	$email = $_POST['email'];
 	$passwort = $_POST['passwort'];
@@ -249,14 +249,14 @@ if($showseite) {
  
 	if($showFormular) {
 	?>
-	<form action="?register=1" method="post">
+	<form action="<?php echo($_SERVER['PHP_SELF']);?>" method="post">
 	<div class="col-md-12 create">
 		<h3 class="edit">Benutzer erstellen</h3>	
 		<input type="text" id="vorname" placeholder="Name" name="vorname"></input>
 		<input type="text" id="nickname" placeholder="Nickname" name="nickname"></input>
 		<input type="email" id="email" placeholder="Email" name="email"></input>
 		<input type="password" id="passwort" placeholder="Passwort" name="passwort"></input>
-		<button type="submit" name="registrieren">Speichern</button>
+		<input type="submit" name="register">
 	</div>
 	</form>
 	<?php
@@ -266,7 +266,7 @@ if($showseite) {
 	<?php 
 	//Benutzer Bearbeiten
 	$showFormular1 = true;
-	if(isset($_GET['change'])) {
+	if(isset($_POST['change'])) {
 		$error1 = false;
 		$id_change = $_POST['id_change'];
 			$name_change = $_POST['name_change'];
@@ -334,7 +334,7 @@ if($showseite) {
 	?>
 	
 	<div class="col-md-12 edit">
-	<form action="?change=1" method="post">
+	<form action="<?php echo($_SERVER['PHP_SELF']);?>" method="post">
 		<h3 class="edit">Benutzer ändern</h3>	
 	
 		<input type="text" id="id_change" placeholder="ID" name="id_change"></input>
@@ -343,7 +343,7 @@ if($showseite) {
 		
 		<input type="email" id="email_change" placeholder="Email" name="email_change"></input>
 		<input type="password" id="passwort_change" placeholder="Passwort change" name="passwort_change"></input>
-		<button type="submit" value="change" name="change">speichern</button>
+		<input type="submit" value="change" name="change">
 	</div>
 	</form>
 	<?php
@@ -352,7 +352,7 @@ if($showseite) {
 		<?php 
 	//Benutzer Löschen
 	$showFormular3 = true;
-	if(isset($_GET['delete'])) {
+	if(isset($_POST['delete'])) {
 		$error3 = false;
 		$id_delete = $_POST['id_delete'];
 
@@ -383,9 +383,9 @@ if($showseite) {
 	
 	<div class="col-md-12 delete">
 		<h3 class="delete">Benutzer löschen</h3>	
-		<form action="?delete=1" method="post">
+		<form action="<?php echo($_SERVER['PHP_SELF']);?>" method="post">
 		<input type="text" id="id_delete" placeholder="ID" name="id_delete"></input>
-		<button type="submit" value="delete" name="delete">Delete</button>
+		<input type="submit" value="delete" name="delete">
 		</form>
 	</div>
 	<?php
@@ -436,7 +436,7 @@ if($showseite) {
 	} else {
 		echo "0 results";
 	}
-	$pdo->close();
+
 	?>
 	</table>
 	</div>

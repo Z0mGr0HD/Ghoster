@@ -1,15 +1,3 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
-  <link rel="stylesheet" href="/styles/theme1/theme.css" type="text/css">
-  <title>Theme1</title>
-</head>
-
-<body>
   <nav class="navbar navbar-fixed-top navbar-expand-lg bg-secondary navbar-dark sticky-top">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">
@@ -38,11 +26,16 @@
             </div>
           </li>
         </ul>
+        <?php
+          echo $info;
+         ?>
+        <!-- Login PC -->
         <form class="form-inline my-2 my-0 d-none d-xl-block" method="POST" action="<?php echo($_SERVER['PHP_SELF']);?>">
-          <input class="form-control mr-2" type="text" placeholder="Benutzername" name="username">
-          <input class="form-control mr-2" type="password" placeholder="Passwort" name="password">
+          <input class="form-control mr-2" type="text" placeholder="Benutzername" name="username" required = "required">
+          <input class="form-control mr-2" type="password" placeholder="Passwort" name="password" required = "required">
           <button class="btn btn-outline-success ml-2" type="submit" id="loginform" name="login">Anmelden</button>
         </form>
+
         <a href="#login" class="btn navbar-btn d-xl-none btn-outline-success" >Anmelden
           <!-- Only visible on smaller then "xl" -->
         </a>
@@ -65,10 +58,11 @@
     </div>
   </div>
   <div class="py-5">
-    <!-- Move Login under Background to Jump -->
+    <!-- Move Login down (br) -->
     <br>
     <br>
     <br> </div>
+<!-- Login Mobil -->
   <div class="py-3 d-xl-none" id="login">
     <div class="container">
       <div class="row">
@@ -83,15 +77,15 @@
       <div class="row">
         <div class="col-1 d-xl-none"></div>
         <div class="col-10 d-xl-none">
-          <form method="POST" action="<?php echo($_SERVER['PHP_SELF']);?>">
+          <form method="POST" action="<?php echo($_SERVER['PHP_SELF']); ?>">
             <div class="form-group">
               <label>Benutzername</label>
-              <input type="text" class="form-control" placeholder="Benutzername" id="username" name="username">
+              <input type="text" class="form-control" placeholder="Benutzername" id="username" name="username" required = "required">
               <small class="form-text text-muted"></small>
             </div>
             <div class="form-group">
               <label>Passwort</label>
-              <input type="password" class="form-control" placeholder="Passwort" id="password" name="password"> </div>
+              <input type="password" class="form-control" placeholder="Passwort" id="password" name="password" required = "required"> </div>
             <button type="submit" class="btn btn-primary" name="login">Anmelden</button>
           </form>
         </div>
@@ -186,9 +180,3 @@
       </div>
     </div>
   </div>
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" crossorigin="anonymous" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-</body>
-
-</html>

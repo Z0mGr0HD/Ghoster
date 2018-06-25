@@ -11,14 +11,21 @@ and open the template in the editor.
         <title>Ghoster - Alpha</title>
     </head>
     <body>
-        <?php
+        <?php	
 		session_start();
+		require_once 'login/login.php';
+		if($loggedin) {
+		  $info = 'Du bist bereits angemeldet.';
+		}else{
+			$info = "Du bist nicht eingeloggt!";
+		}
 
+            
             require_once 'styles/files/bootstrap-top.php';
 		      require_once 'styles/theme1/index.php';
             require_once 'styles/files/bootstrap-bottom.php';
 
-            require_once 'login/login.php';
+
 		    require_once 'logout/logout.php';
 		    require_once 'register/register.php';
 
@@ -27,15 +34,9 @@ and open the template in the editor.
            $startsite = true;
            if($loggedin) {
         
-               $info = 'Du bist bereits angemeldet.';
-                echo $info;
+               
+				echo '<meta http-equiv="refresh" content="2"; URL=http://www.playvode.de/dashboard/">';
 
-
-        
-         // echo '<meta http-equiv="refresh" content="20; URL=https://www.redirect301.de/meta-refresh.html">';
-
-		  }else {
-                      echo $info;
-                  } ?>
+		  } ?>
     </body>
 </html>
