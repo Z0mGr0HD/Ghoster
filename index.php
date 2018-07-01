@@ -13,6 +13,10 @@ and open the template in the editor.
     <body>
         <?php	
 		session_start();
+		?>
+
+		<?php
+		  require_once 'styles/files/bootstrap-top.php';
 		require_once 'login/login.php';
 		if($loggedin) {
 		  $info = 'Du bist bereits angemeldet.';
@@ -21,9 +25,9 @@ and open the template in the editor.
 		}
 
             
-            require_once 'styles/files/bootstrap-top.php';
+          
 		      require_once 'styles/theme1/index.php';
-            require_once 'styles/files/bootstrap-bottom.php';
+
 
 
 		    require_once 'logout/logout.php';
@@ -35,8 +39,9 @@ and open the template in the editor.
            if($loggedin) {
         
                
-				echo '<meta http-equiv="refresh" content="2"; URL=http://www.playvode.de/dashboard/">';
+				echo '<meta http-equiv="refresh" content="2; URL=http://www.playvode.de/dashboard/">';
 
-		  } ?>
+		  } 
+		              require_once 'styles/files/bootstrap-bottom.php';?>
     </body>
 </html>

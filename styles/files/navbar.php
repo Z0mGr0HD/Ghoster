@@ -4,7 +4,7 @@
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="col-1 col-sm-1 col-md-1 col-lg-1">
                 <a class="navbar-brand" href="#">
-                    <img src="https://v4-alpha.getbootstrap.com/assets/brand/bootstrap-solid.svg" width="30" height="30" class="d-inline-block align-top" alt="Ghoster-Logo">
+                    <img src="/favicon.ico" width="30" height="30" class="d-inline-block align-top" alt="Ghoster-Logo">
                     Ghoster
                 </a>
             </div>
@@ -28,9 +28,13 @@
                     </li>
 
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					<?php
+					 $ppic = profilePicture($user);
+					?>
+					    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+   						<img src="../uploads/<?php echo $ppic; ?>" class="rounded-circle" style="width:20px;height:20px;" />
                             Account (mach mich rechts...)
-                        </a>
+                          </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             <a class="dropdown-item" href="#">Unterpunkt 1</a>
                             <a class="dropdown-item" href="#">Unterpunkt 2</a>

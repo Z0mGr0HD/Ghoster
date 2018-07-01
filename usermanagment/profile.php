@@ -8,15 +8,7 @@
     <body>
         <?php
         
-        if(isset($_POST['yourprofile'])) {
-            $username = $_SESSION['username'];
-            getProfile($username);
-        }
-        if(isset($_GET['profile'])) {
-             $username = $_GET['profile'];
-            getProfile($username);
-        }
-        
+   
         
         function getProfile($user) {
             require '../config/config.init.php';
@@ -24,7 +16,8 @@
             
             $ppic = profilePicture($user);
            
-            ?> <img src="../uploads/<?php echo $ppic; ?>" style="width:70px;height:70px;" /> <?php
+        
+			
             countGhosts($user);
             timeFeed($user);
             
@@ -73,7 +66,7 @@
             
             while($row = $exe->fetch() or $row1 = $exe1->fetch()) {
              $ppic = profilePicture($user);
-				?><img src="../uploads/<?php echo $ppic; ?>" style="width:20px;height:20px;" /><?php
+				?><img src="../uploads/<?php echo $ppic; ?>" class="rounded-circle" style="width:35px;height:35px;" /><?php
                 echo "<a href=?profile=".$row['fromuser'].">".$row['fromuser']."<br /></a>";
                 echo $row['message']."<br />";
 			  if(isset($row1)){

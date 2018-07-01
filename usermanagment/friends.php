@@ -25,6 +25,52 @@ function isFriends($user1,$user2) {
         }
 }
 
+function isFollowed($user1) {
+	require '../config/config.init.php';
+          
+     $statement = $pdo->prepare("SELECT * FROM follow WHERE user1 = :user1");
+        $result = $statement->execute(array('user1' => $user1));
+        $user = $statement->fetch();
+        
+        if($user !== false) {
+            return $user;
+        }else{
+            return false;
+        }
+}
+
+function Follow($user1,$user2) {
+		require '../config/config.init.php';
+		
+		if(isFollowed($user1,$user2) {
+        unFollow($user1,$user2);
+		}else {
+				         $statement = $pdo->prepare("INSERT INTO follow (user1,user2) VALUES (:user1 , :user2, )");
+	$result = $statement->execute(array('user1' => $user1, 'user2' => $user2));
+         
+        if($result) {
+         echo "You Follow them now";
+        }else{ 
+            echo "ERROR";
+         } 
+		}
+}
+
+function unFollow($user1,$user2) {
+			require '../config/config.init.php';
+	
+	
+	$statement = $pdo->prepare("DELETE FROM follow (user1,user2) VALUES (:user1 , :user2, )");
+	$result = $statement->execute(array('user1' => $user1, 'user2' => $user2));
+         
+        if($result) {
+         echo "You Unfollow them now";
+        }else{ 
+            echo "ERROR";
+         } 
+	
+}
+
 function friendRequest($user1,$user2) {
 	require '../config/config.init.php';
         $pending1 = "pending";

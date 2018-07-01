@@ -1,18 +1,31 @@
 <?php
-require_once '../usermanagment/profile.php';
+require_once '../styles/files/bootstrap-top.php';
 
+require_once '../usermanagment/profile.php';
 session_start();
+ $user = $_SESSION['username'];
+require '../styles/files/navbar.php';
+
+
+
+
 
 $profile = false;
-  $nick = $_SESSION['username'];
+ 
 
-echo "<a href='?profile=$nick'>";   echo 'Nachrichten';
+echo "<a href='?profile=$user'>Profil</a>";   echo 'Nachrichten';
            if(isset($_SESSION["userid"])) 
    {   
-
-               $startsite = true;
-			   }else {
-			   $startsite = false;
+		    if(isset($_GET['profile'])) {
+				$startsite = false;
+             $username = $_GET['profile'];
+			   echo '<div class="feed col-md-offset-4 col-md-4 col-sm-offset-3 col-sm-6 text-center">';
+            getProfile($username);
+			  echo '</div>';
+        }else {
+			$startsite = true;
+		}
+               
 		   }
            if($startsite) {
 
@@ -23,15 +36,17 @@ echo "<a href='?profile=$nick'>";   echo 'Nachrichten';
 
 
 
-      echo '<div class="feed">';
+      echo '<div class="feed col-md-offset-4 col-md-4 col-sm-offset-3 col-sm-6 text-center">';
 
                    
                  
-                   timeFeed($nick);
+                   timeFeed($user);
 
     echo '</div>';
 
 		   }
+		   
+
            
 
 
@@ -48,6 +63,6 @@ echo "<a href='?profile=$nick'>";   echo 'Nachrichten';
 
 
 
-
+require '../styles/files/bootstrap-bottom.php';
 
 ?>
