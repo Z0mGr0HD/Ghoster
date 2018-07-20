@@ -18,7 +18,7 @@
            
         
 			
-            countGhosts($user);
+            echo countGhosts($user);
             timeFeed($user);
             
             
@@ -67,8 +67,8 @@
             while($row = $exe->fetch() or $row1 = $exe1->fetch()) {
              $ppic = profilePicture($user);
 				?><img src="../uploads/<?php echo $ppic; ?>" class="rounded-circle" style="width:35px;height:35px;" /><?php
-                echo "<a href=?profile=".$row['fromuser'].">".$row['fromuser']."<br /></a>";
-                echo $row['message']."<br />";
+                echo "<a href=?profile=".$row['fromuser'].">".$row['fromuser']."</a><br />";
+                echo "<a href=?id=".$row['mid'].">".$row['message']."<br />";
 			  if(isset($row1)){
                 echo $row1['fromuser']."<br />";
                 echo $row1['message']."<br />";

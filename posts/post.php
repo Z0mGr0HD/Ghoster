@@ -65,13 +65,13 @@
 	    $result = $statement->execute(array(':mid' => null, ':fromuser' => $fromuser, ':message' => $message, ':touser' => $touser));
          
         if($result) {
-            
+
         }else {
            die;
         }
 		}
         
-				 if(isset($_POST['sendmsg'])) {
+            				 if(isset($_POST['sendmsg'])) {
                                      $error = false; 
                                      $msg = $_POST['message'];
             $user = $_SESSION["username"];
