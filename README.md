@@ -12,3 +12,4 @@ Darum bitten wir dich um Geduld.
 Danke.
 
 https://twitter.com/GhosterNews
+"# GhosterTemplates" 
